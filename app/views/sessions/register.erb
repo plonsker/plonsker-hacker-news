@@ -1,0 +1,14 @@
+<h4>Register</h4>
+
+<%erb :'_errors', :locals => {:errors => @errors}%>
+<form method="POST" action="/register">
+  <p>
+  <label for="username">Username:</label>
+  </p>
+  <input type="text" name="user[name]" placeholder="Username">
+  <p>
+  <label for="password">Password:</label>
+  </p>
+  <input type="text" name="user[password]" placeholder="Password">
+  <input type="submit" value="Join Us">
+ </form>
