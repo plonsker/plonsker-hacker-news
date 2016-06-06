@@ -1,0 +1,9 @@
+<h3>Update your slacker entry</h3>
+<h3><%=@entry.title%></h3>
+<div>
+  <form method="POST" action="/entries">
+    <input type="text" name="entry[title]" value="<%= @entry.title%>"><p>
+    <input type="text" name="entry[submission_link]" value="<%= @entry.submission_link%>"><p>
+    <input type="submit" value="Submit">
+  </form>
+</div>

@@ -1,0 +1,44 @@
+<h3><a href="<%=@entry.submission_link%>" target="_blank"><%=@entry.title%></a></h3>
+
+<%if logged_in? && @entry.original_author?(current_user)%>
+<!-- everyone is a moderator with the power to delete in this case. will need to learn to match session with user-->
+
+<a href="/entries/<%=@entry.id%>/edit">
+   <button>Edit</button></a>
+  <form method="POST" action="/entries/<%= @entry.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete this post">
+        </form>
+
+<%end%>
+
+<!-- Comment form -->
+
+<!-- -->
+<%if logged_in?%>
+<form method="POST" action="/comments">
+<input type="hidden" name="comment[entry_id]" value="<%=@entry.id%>">
+  <p>
+  <textarea rows="7" cols="30" name="comment[content]"></textarea>
+  <input type="submit" value="Submit Comment">
+</form>
+
+
+
+<%end%>
+
+
+
+<%@comments.each do |comment|%>
+  <p>
+  <%=comment.content%>
+  </p>
+  <p>
+  <a href="/users/<%=@user.id%>"><%=comment.user.name%></a>
+  </p>
+  <p>
+  <%=comment.created_at%>
+  </p>
+  <%end%>
+
+

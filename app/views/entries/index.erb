@@ -1,0 +1,19 @@
+<%=erb :'_errors'%>
+<ul>
+<%@entries.each do |entry| %>
+	<li>
+	<a href="/entries/<%=entry.id%>"><%=entry.title%></a>
+
+	--
+	<div class="vote_count<%=entry.id%>">
+	<%=entry.entry_votes.count%>
+	</div>
+
+	<div class="upvote_button">
+	<form method="POST" action="entries/<%=entry.id%>/entry-votes" class="upvote">
+	<input type="submit" value="∆"></form>
+	</div>
+</li>
+<%end%>
+
+</ul>
